@@ -3,6 +3,7 @@
  * @return {number[]}
  */
 var leftRightDifference = function(nums) {
+    // Solution:1
     const leftSumsArray = [...nums];
     const rightSumsArray= [...nums];
     leftSumsArray.unshift(0);
@@ -23,6 +24,19 @@ var leftRightDifference = function(nums) {
     }
     const data=leftSum.map((value,index)=>Math.abs(value-rightSum[index]));
     return data;
+    // Solution:2
+    /*
+    let leftSum = 0;
+    let rightSum = nums.reduce((acc, num)=>acc+=num, 0);
+
+    return nums.map((num, idx) => {
+        rightSum -= num;
+        const diff = Math.abs(leftSum - rightSum);
+        leftSum += num;
+
+        return diff;
+    });
+    */
 };
 const input = [[10,4,8,3],[1]];
 for (const key in input) {
